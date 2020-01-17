@@ -117,3 +117,35 @@ inset into Student_t values
 ('ZW7657', 'Beatriz', 'Solorzano', 'MSBA', 'Spring 2020'),
 ('HB9456', 'Eduardo', 'Carrascosa', 'MSBA', 'Spring 2020'),
 ('SP6566', 'Marie', 'Ruby', 'MSBA', 'Fall 2019');
+ 
+ --Query 1 counts the number of students graduating per semester
+Select GradDate, Count(*) as Total
+From Student_t
+Group By GradDate;
+ 
+--Query 2 displays the student's name and major who have taken a specific course
+ Select StudentFirstName, StudentLastName, Major
+ From Student_t, Grade_t
+ Where Student_t.NetID = Grade_t.NetID
+ AND CourseNumber = 'BAN 610';
+ 
+--Query 3 displays the NetID and Student name of the students who have taken more 
+--than 5 courses
+ Select Student_t.NetID, StudentFirstName, StudentLastName
+ From Student_t, Grade_t
+ Where Student_t.NetID = Grade_t.NetID
+ Group By Student_t.NetID, StudentFirstName, StudentLastName
+ Having Count(Grade) > 5;
+ 
+ --Query 4 displays the NetID and the total credit hours taken by each student in 2018
+ Select NetID, Sum(CreditHours) as 'Total Credits'
+ From Grade_t, Course_t
+ Where Grade_t.CourseNumber = Course_t.CourseNumber
+ Group By NetID, CreditHours;
+ 
+ --Query 5 displays the instructor's name and the number of book prescribed by each instructor
+ Select InstructorFirstName, InstructorLastName, Count(Course_t.InstructorID) as 'Number of Books'
+ From Course_t, Instructor_t
+ Where Course_t.InstructorID = Instructor_t.InstructorID
+ Group By InstructorFirstName, InstructorLastName
+ 
