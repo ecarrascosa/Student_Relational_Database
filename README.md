@@ -1,8 +1,8 @@
 # This is the final project of a "Database Management and Administration" class in my M.Sc. in Analytics program taken in the Spring 2019. 
 
 ## Repo includes
--Term.sql is the database implementation schema
--Term Paper Functional Dependency Diagram.docx 
+-Term.sql is the database implementation schema <br/>
+-Term Paper Functional Dependency Diagram.docx <br/>
 -Power point presentation of project
 
 ## Below are the guidelines for the project
